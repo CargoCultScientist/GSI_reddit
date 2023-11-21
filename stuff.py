@@ -7,11 +7,14 @@ import requests
 import pandas as pd
 import zstandard as zstd
 from io import BytesIO
-im
+
 #%%
 test_data = pd.read_csv('Israeli-Palestinian Conflict.csv-20231115T105153Z-001/Israeli-Palestinian Conflict.csv')
 
 
+# Defines a multi-line text (doc) and uses the KeyBERT library to extract keywords from it.
+# The KeyBERT model is employed to extract keywords or key phrases from the given text data.
+# The extracted keywords are stored in the keywords variable.
 
 # %%
 from keybert import KeyBERT
