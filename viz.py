@@ -1,3 +1,8 @@
+# comprehensive script for analyzing and visualizing sentiment data from a dataset, here: containing comments and posts from specific subreddits 
+# This script can be instrumental in sentiment analysis projects, especially those focusing on social media or forum data,
+# to understand public opinion, track sentiment trends over time, and identify influential authors or contributors in online discussions. 
+# It's particularly relevant for analyzing discussions around polarizing topics, as shown by the focus on climate change-related subreddits in this case.
+
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -16,7 +21,9 @@ daily_agg = df.groupby(['subreddit', 'date'])[['vader.title', 'vader.comment']].
 # Setting a minimalist style for the plot
 sns.set(style="whitegrid", palette="pastel")
 
-# Plotting the daily aggregated VADER scores
+# Line Plot for Daily Aggregated VADER Scores
+# Aggregates the VADER sentiment scores ('vader.title', 'vader.comment') by day and subreddit.
+# Visualizes these aggregated scores using a line plot with a minimalist style, differentiating subreddits by color.
 plt.figure(figsize=(15, 7))
 sns.lineplot(data=daily_agg, x='date', y='vader.comment', hue='subreddit')
 plt.title('Daily Aggregated VADER Scores by Subreddit - Minimalist Style')
@@ -44,6 +51,11 @@ df['date'] = df['comm_date'].dt.date
 # Aggregate the VADER scores by day and subreddit
 daily_agg = df.groupby(['subreddit', 'date'])[['vader.title', 'vader.comment']].mean().reset_index()
 
+# Bar Plots for Specific Subreddits
+# Filters data for specific subreddits ('climatechange' and 'climateskeptics').
+# Adjusts for the date range to ensure comparability.
+# Saves and displays bar charts showing daily aggregated VADER scores for these subreddits.
+
 # Filter data for specific subreddits and adjust the date range
 climatechange_data = daily_agg[daily_agg['subreddit'] == 'climatechange']
 climateskeptics_data = daily_agg[daily_agg['subreddit'] == 'climateskeptics']
@@ -65,7 +77,14 @@ def save_plot(data, title, color, file_path):
 save_plot(climatechange_data, 'Daily Aggregated VADER Scores in r/climatechange', 'skyblue', 'climatechange_bar_plot.png')
 save_plot(climateskeptics_data, 'Daily Aggregated VADER Scores in r/climateskeptics - Adjusted Date Range', 'coral', 'climateskeptics_bar_plot.png')
 
+
+# Word Cloud Generation
+# Generates word clouds for positive and negative comments from the top 30 authors by comment count.
+# Custom stopwords are used to filter out common but uninformative words.
+# Two word clouds are generated, one for positive and one for negative sentiment, and are saved as image files.
+
 # Filtering the top 30 authors by number of comments
+# Aggregates and saves data about these authors, including the count of comments and average VADER score.
 top_authors = df['author'].value_counts().head(30).index
 top_authors_data = df[df['author'].isin(top_authors)]
 
