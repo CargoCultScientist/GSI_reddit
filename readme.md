@@ -39,9 +39,7 @@ This tool is designed to analyze the sources of climate disinformation on Reddit
    - The data is expected to be in a tabular (CSV) format.
    - Each row in this DataFrame would represent an individual comment or post, with the relevant information spread across the columns mentioned above.
 
-### Usage in the Script
-
-- The script will use this data to perform co-occurrence analysis, which might involve calculating how often specific words are used together in `comment` and `title` columns, or how often certain users (`user` column) interact with specific authors (`author` column).
+- The script will use this data to perform co-occurrence analysis, which involves calculating how often specific words are used together in `comment` and `title` columns, or how often certain users (`user` column) interact with specific authors (`author` column).
 - Additionally, by including `comm_date`, the script could analyze how these co-occurrence patterns evolve over time.
 
 
