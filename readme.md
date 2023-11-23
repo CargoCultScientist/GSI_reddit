@@ -76,8 +76,7 @@ Please ensure your code adheres to the project's coding standards and include an
 
 ## License
 
-This project is licensed under the [LICENSE NAME] - see the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE.md](LICENSE.md) file for details.
 
----
+The GNU General Public License is a free, copyleft license for software and other kinds of works, ensuring that all modified versions of the project are also free and open source. By using this license, we guarantee the user's freedom to share and change the software, and that all versions of the software are protected in the same way.
 
-You can further modify this template to better suit the specifics of your project or personal preferences.
